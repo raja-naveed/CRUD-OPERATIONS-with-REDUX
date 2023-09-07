@@ -11,7 +11,7 @@ const userSlice = createSlice({
     },
     updateUser: (state, action) => {
       const { id, name, email } = action.payload;
-      const existingUser = state.find((user) => user.id === id);
+      const existingUser = state.find((user) => user.id == id);
       if (existingUser) {
         // Use immer to ensure immutability
         existingUser.name = name;

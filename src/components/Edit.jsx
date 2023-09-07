@@ -7,8 +7,8 @@ import { useNavigate } from "react-router-dom";
 const Edit = () => {
   const { id } = useParams();
   const users = useSelector((state) => state.users);
-  const user = users.find((user) => user.id === parseInt(id));
-  const { name, email } = user;
+  const existingUser = users.find((user) => user.id ==id);
+  const { name, email } = existingUser; 
   const [uname, setName] = useState(name);
   const [uemail, setEmail] = useState(email);
   const dispatch = useDispatch();
@@ -17,7 +17,9 @@ const Edit = () => {
   const handleUpdate = (e) => {
     e.preventDefault();
     console.log("Updating user:", { id, name: uname, email: uemail }); // Log the payload
-    dispatch(updateUser({ id, name: uname, email: uemail }));
+    dispatch(updateUser({ 
+      id, name: uname, email: uemail
+     }));
     console.log("Updated user:", users); // Log the updated state
     navigate("/");
   };
