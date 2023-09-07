@@ -12,13 +12,11 @@ const Create = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    let newUserId = 1; // Default initial ID
     if (users && users.length > 0) {
-      const newUserId = users[users.length - 1].id + 1;
-      dispatch(addUser({ id: newUserId, name, email }));
-    } else {
-      // Handle the case when users array is empty
-      // You might want to assign an initial ID or handle it differently
+      newUserId = users[users.length - 1].id + 1;
     }
+    dispatch(addUser({ id: newUserId, name, email }));
     navigate("/");
   };
 
